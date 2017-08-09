@@ -6,10 +6,8 @@ var path = require('path');
 
 var app = express();
 
-const port = 3000;
-const route = require('./routes/route');
-
 mongoose.connect('mongodb://localhost:27017/svgur_01');
+
 mongoose.connection.on('connected', ()=>{
     console.log('db connected on 27017');
 });
@@ -17,7 +15,10 @@ mongoose.connection.on('error', (err)=>{
     if(err){
         console.log('db error ' + err);
     }
-})
+});
+
+const port = 3000;
+const route = require('./routes/route');
 
 
 app.use(cors());
